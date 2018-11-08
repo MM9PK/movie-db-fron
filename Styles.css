@@ -29,11 +29,6 @@ body {
     padding-bottom: 50px;
 }
 
-.navigateBar
-{
-	
-}
-
 .navigateBar ul {
     list-style-type: none;
     margin: 0;
@@ -58,30 +53,43 @@ li a:hover {
     background-image: linear-gradient(to bottom , #000000, #333);
 }
 
-.navigateBar input[type=text] {
+.navigateBar input[type=text], .main input {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
 }
 
-.navigateBar button {
+.navigateBar button, .main button {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
   background: #ddd;
   font-size: 17px;
+  text-decoration: none;
   border: none;
   cursor: pointer;
+}
+
+.login
+{
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.logform
+{
+   position: relative;
+   left : 40%;
+   width:20%;
 }
 
 .main
 {
     height: 700px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0px 3px 3px 3px; 
+	background-color:lightgray;
 }
 
 .footer
