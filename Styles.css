@@ -88,8 +88,66 @@ li a:hover {
 
 .main
 {
-    height: 700px;
-	background-color:lightgray;
+    height: 750px;
+    background-color:lightgray;
+    padding-top: 50px;
+}
+
+.movie_1
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.movie_2
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.movie_3
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.desc_1
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
+}
+
+.desc_2
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
+}
+
+.desc_3
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
 }
 
 .footer
@@ -100,4 +158,8 @@ li a:hover {
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
+}
+img
+{
+    margin: 25px 0px 25px 25px;
 }
