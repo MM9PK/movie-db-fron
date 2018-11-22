@@ -19,14 +19,46 @@ body {
 }
 
 
+
 .baner
 {
     background-color: #333;
     height: 10%;
     color: white;
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main
+{
+    height: 750px!important;
+    background-color:lightgray;
     padding-top: 50px;
-    padding-bottom: 50px;
+}
+
+.main_in_iframe
+{
+    background-color:lightgray;
+    padding-top: 50px;
+}
+
+.main_iframe {
+    border: 0!important;
+    border-style: none;
+    border-color: none;
+    border-image: none;
+    width: 100%;
+    height: 764px!important;
+}
+
+.footer
+{
+    height: 28px;
+    background-color: #333;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
 }
 
 .navigateBar ul {
@@ -86,41 +118,17 @@ li a:hover {
    width:20%;
 }
 
-.main
-{
-    height: 750px;
-    background-color:lightgray;
-    padding-top: 50px;
-}
-
-.movie_1
+.movie
 {
     height: 200px;
+    left:24%;
     background-color: #333;
     width: 800px;
     margin: auto;
-    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
-.movie_2
-{
-    height: 200px;
-    background-color: #333;
-    width: 800px;
-    margin: auto;
-    margin-bottom: 50px;
-}
-
-.movie_3
-{
-    height: 200px;
-    background-color: #333;
-    width: 800px;
-    margin: auto;
-    margin-bottom: 50px;
-}
-
-.desc_1
+.desc
 {
     float: right;
     height: 150px; 
@@ -130,36 +138,28 @@ li a:hover {
     font-size: 18px;
 }
 
-.desc_2
-{
-    float: right;
-    height: 150px; 
-    width: 575px;
-    margin: 25px 25px 25px 0px;
-    color: white;
-    font-size: 18px;
-}
-
-.desc_3
-{
-    float: right;
-    height: 150px; 
-    width: 575px;
-    margin: 25px 25px 25px 0px;
-    color: white;
-    font-size: 18px;
-}
-
-.footer
-{
-    height: 12px;
-    background-color: #333;
-    color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
 img
 {
     margin: 25px 0px 25px 25px;
+    height:150px;
+    width:150px;
+}
+
+.collapsible {
+    color: white;
+    background-color: #333!important;
+    cursor: pointer;
+}
+
+.content {
+    position: relative;
+    color: white;
+    background-color: #333!important;
+    margin:auto;
+    width:764px;
+    height: 70px;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }

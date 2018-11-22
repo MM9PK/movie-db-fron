@@ -1,0 +1,68 @@
+<head>
+        <link rel="stylesheet" href="Styles.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <div class="main_in_iframe">
+            <div class="collapsible movie">
+                <img src="Killer.jpg">
+                <div class="desc">
+                    Tytuł: Killer <br/> 
+                    Reżyser: Juliusz Machulski <br/>
+                    Główna Rola: Cezary Pazura <br/>
+                </div>
+            </div>
+            <div class="content">
+                    Opis filmu:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+
+            <div class="collapsible movie">
+                <img src="GłupiIGłupszy.jpg">
+                <div class="desc">
+                        Tytuł: Głupi i Głupszy <br/>
+                        Reżyser: Peter Farelly <br/>
+                        Główne Role: Jim Carrey, Jeff Daniels <br/>
+                        Opis: <br/>
+                </div>
+            </div>
+            <div class="content">
+                    Opis filmu:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+            <div class="collapsible movie">
+                <img src="HarryPotter_I.jpg">
+                <div class="desc">
+                        Tytuł: Harry Potter i Kamień Filozoficzny <br/>
+                        Reżyser: Juliusz Machulski <br/>
+                        Główne Role: Daniel Radcliffe, Rupert Grint, Emma Watson<br/>
+                        Opis: <br/>
+                </div>
+            </div>
+            <div class="content">
+                    Opis filmu:<br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            } 
+        });
+        }
+    </script>
