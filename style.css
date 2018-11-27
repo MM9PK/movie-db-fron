@@ -1,0 +1,234 @@
+*
+{
+    padding: 0px;
+    margin: 0;
+}
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+.container
+{
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+
+.baner
+{
+    background-color: #333;
+    height: 10%;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.navigateBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #888888;
+	}
+
+.navigateBar li {
+    float: left;
+}
+
+.navigateBar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-image: linear-gradient(to bottom , #000000, #333);
+}
+
+.navigateBar input[type=text], .main input {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.navigateBar button, .main button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login
+{
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.logform
+{
+   position: relative;
+   left : 40%;
+   width:20%;
+}
+
+.main
+{
+    height: 750px;
+    background-color:lightgray;
+    padding-top: 50px;
+}
+
+.movie_1
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.movie_2
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.movie_3
+{
+    height: 200px;
+    background-color: #333;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.desc_1
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
+}
+
+.desc_2
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
+}
+
+.desc_3
+{
+    float: right;
+    height: 150px; 
+    width: 575px;
+    margin: 25px 25px 25px 0px;
+    color: white;
+    font-size: 18px;
+}
+
+.footer
+{
+    height: 12px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+img
+{
+    margin: 25px 0px 25px 25px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  body {
+    font-size: 120%;
+    background: #F8F8FF;
+  }
+  
+  .header {
+    width: 30%;
+    margin: 50px auto 0px;
+    color: white;
+    background: #5F9EA0;
+    text-align: center;
+    border: 1px solid #B0C4DE;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+  }
+  form, .content {
+    width: 30%;
+    margin: 0px auto;
+    padding: 20px;
+    border: 1px solid #B0C4DE;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+  }
+  .input-group {
+    margin: 10px 0px 10px 0px;
+  }
+  .input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+  }
+  .input-group input {
+    height: 30px;
+    width: 93%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  .btn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background: #5F9EA0;
+    border: none;
+    border-radius: 5px;
+  }
+  .error {
+    width: 92%; 
+    margin: 0px auto; 
+    padding: 10px; 
+    border: 1px solid #a94442; 
+    color: #a94442; 
+    background: #f2dede; 
+    border-radius: 5px; 
+    text-align: left;
+  }
+  .success {
+    color: #3c763d; 
+    background: #dff0d8; 
+    border: 1px solid #3c763d;
+    margin-bottom: 20px;
+  }
