@@ -9,16 +9,32 @@
       session_destroy();
       unset($_SESSION['username']);
       header("location: login.php");
+  } else {
+	  $db = mysqli_connect('localhost', 'root', '', 'movie-db');
+	  $db ->query ('SET NAMES utf8');
+	  $db ->query('SET CHARACTER_SET utf8_utf8');
+      $page = 1;
+      $moviesAmount = 5 * $page;
+      $query = "SELECT * FROM movies TOP LIMIT $moviesAmount";
+      $results = mysqli_query($db, $query);
+      if ($rows = mysqli_num_rows($results) > 0) {
+          for ($i = 0; $i < $rows; $i++) {
+              $row = $results->fetch_assoc();
+              $title[$i] = $row['title'];
+              $actors[$i] = $row['actors'];
+              $releaseYear[$i] = $row['releaseYear'];
+              $description[$i] = utf8_decode($row['description']);
+              $director[$i] = $row['director'];
+              $img[$i] = $row['img'];
+          }
+      }
   }
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta lang="pl-PL">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Serwis Filmowy</title>
 	<link rel="stylesheet" href="Styles.css" type="text/css">
@@ -59,16 +75,18 @@
 
 			<div class="movie_1">
 
-				<img src="<?php $_GET['0'];?>" />
 				<?php
-                for ($i = 0; $i < $_SESSION['moviesAmount']; $i++) {
-                    echo $_SESSION['title'.$i];
-                    echo $_SESSION['actors'.$i];
-                    echo $_SESSION['releaseYear'.$i];
-                    echo $_SESSION['description'.$i];
-                    echo $_SESSION['director'.$i];
+                for ($i = 0; $i < $rows; $i++) {
+                    echo  $title[$i];
+                    echo  $actors[$i];
+					echo  $releaseYear[$i];
+					header("Content-Type: text/html;charset=UTF-8");  
+                    echo  utf8_encode($description[$i]);
+                    echo  $director[$i];
+                    echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';
                 }
                 ?>
+				
 				<div class="desc_1">
 					Tytuł: Killer <br />
 					Reżyser: Juliusz Machulski <br />

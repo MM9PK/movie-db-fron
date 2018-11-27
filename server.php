@@ -86,21 +86,6 @@ if (isset($_POST['login_user'])) {
         } else {
             array_push($errors, "Wrong username/password combination");
         }
-        $query = "SELECT * FROM movies WHERE id = 1";
-        $row = mysqli_query($db, $query);
-        $i = 0;
-        while($row = mysqli_fetch_array($row)){
-          $_SESSION['title'.$i] = $row['title'];
-          $_SESSION['actors'.$i] = $row['actors'];
-          $_SESSION['releaseYear'.$i] = $row['releaseYear'];
-          $_SESSION['description'.$i] = $row['description'];
-          $_SESSION['director'.$i] = $row['director'];
-          $_SESSION['img'.$i] = $row['img'];
-          $i++;
-          $_SESSION['moviesAmount'] = $i;
-          
-        }
-        
     }
 }
 
