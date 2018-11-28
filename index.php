@@ -10,9 +10,8 @@
       unset($_SESSION['username']);
       header("location: login.php");
   } else {
-	  $db = mysqli_connect('localhost', 'root', '', 'movie-db');
-	  $db ->query ('SET NAMES utf8');
-	  $db ->query('SET CHARACTER_SET utf8_utf8');
+      $db = mysqli_connect('localhost', 'root', '', 'movie-db');
+      mysqli_set_charset($db, 'utf8');
       $page = 1;
       $moviesAmount = 5 * $page;
       $query = "SELECT * FROM movies TOP LIMIT $moviesAmount";
@@ -23,21 +22,22 @@
               $title[$i] = $row['title'];
               $actors[$i] = $row['actors'];
               $releaseYear[$i] = $row['releaseYear'];
-              $description[$i] = utf8_decode($row['description']);
+              $description[$i] = $row['description'];
               $director[$i] = $row['director'];
               $img[$i] = $row['img'];
           }
       }
   }
+
 ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="pl">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Serwis Filmowy</title>
-	<link rel="stylesheet" href="Styles.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
@@ -51,13 +51,6 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Films</a></li>
 				<li><a href="#">Series</a></li>
-				<li><a href="#">Animated Series</a></li>
-				<li>
-					<form action="/action_page.php">
-						<input type="text" placeholder="Search.." name="search">
-						<button type="submit">Search</button>
-					</form>
-				</li>
 				<li style="float:right">
 					<?php  if (isset($_SESSION['username'])) : ?>
 					<p><strong> You are currently logged in as
@@ -74,19 +67,16 @@
 		<div class="main">
 
 			<div class="movie_1">
-
 				<?php
                 for ($i = 0; $i < $rows; $i++) {
                     echo  $title[$i];
                     echo  $actors[$i];
-					echo  $releaseYear[$i];
-					header("Content-Type: text/html;charset=UTF-8");  
-                    echo  utf8_encode($description[$i]);
+                    echo  $releaseYear[$i];
+                    echo  $description[$i];
                     echo  $director[$i];
-                    echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';
+					echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';
                 }
                 ?>
-				
 				<div class="desc_1">
 					Tytuł: Killer <br />
 					Reżyser: Juliusz Machulski <br />
@@ -120,14 +110,6 @@
 			Powered By SEKCJA1
 		</div>
 	</div>
-	<!-- notification message -->
-	<?php if (isset($_SESSION['success'])) : ?>
-	<?php
-              unset($_SESSION['success']);
-          ?>
-	<?php endif ?>
-
-
 </body>
 
 </html>
