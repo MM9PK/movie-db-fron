@@ -90,8 +90,6 @@ if (isset($_POST['login_user'])) {
     }
 }
 
-<<<<<<< HEAD
-=======
 //ADD NEW MOVIE
 if (isset($_POST['add'])) {
     // receive all input values from the form
@@ -155,5 +153,4 @@ if (isset($_POST['add'])) {
 }
        
 
->>>>>>> add_movie_panel
 ?>
