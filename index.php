@@ -31,8 +31,10 @@
 		<div class="navigateBar">
 			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Films</a></li>
-				<li><a href="#">Series</a></li>
+				<li><a href="main.php" target="iframe_a">Films</a></li>
+				<li><a href="series.php" target="iframe_a">Series</a></li>
+                <li><a href="#">TV Series</a></li>
+                <li><a href="#">Games</a></li>
 				<li style="float:right">
 					<a href="index.php?logout='1'" style="background-color: red;">Log out</a>
 				</li>		
@@ -48,7 +50,7 @@
 				</li>
 			</ul>
 		</div>
-		<iframe class="main_iframe" src="main.php"></iframe>
+        <iframe name="iframe_a" class=" main_iframe" src="main.php" width="100%" height="500px" scrolling="yes" frameborder="0"></iframe>
 		<div class="footer">
 				Powered By SEKCJA1
 		</div>

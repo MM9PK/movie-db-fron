@@ -14,7 +14,7 @@
       mysqli_set_charset($db, 'utf8');
       $page = 1;
       $moviesAmount = 5 * $page;
-      $query = "SELECT * FROM movies TOP LIMIT $moviesAmount";
+      $query = "SELECT * FROM series TOP LIMIT $moviesAmount";
       $results = mysqli_query($db, $query);
       if ($rows = mysqli_num_rows($results) > 0) {
           for ($i = 0; $i < $rows; $i++) {
