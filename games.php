@@ -16,8 +16,10 @@
       $gamesAmount = 5 * $page;
       $query = "SELECT * FROM games TOP LIMIT $gamesAmount";
       $results = mysqli_query($db, $query);
-      if ($rows = mysqli_num_rows($results) > 0) {
-          for ($i = 0; $i < $rows; $i++) {
+      $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM games"));
+      $total = $count[0];
+      if ($total > 0) {
+          for ($i = 0; $i < $total; $i++) {
               $row = $results->fetch_assoc();
               $title[$i] = $row['title'];
               $genre[$i] = $row['genre'];
@@ -36,12 +38,12 @@
 <body>
     <div class="container">
         <div class="main_in_iframe">
-        <?php for ($i = 0; $i < $rows; $i++) { ?>
+            <?php for ($i = 0; $i < $total; $i++) { ?>
             <div >
                 
                 <div class="onetitle">
                     <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';?>
-                    <div class="movieinfo">
+                    <div class="movieinfo">                      
                         <h1>Title: <?php echo  $title[$i];?></h1>   
                         Developer: <?php echo  $developer[$i];?><br />
                         Genre: <?php echo  $genre[$i];?><br />

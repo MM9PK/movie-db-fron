@@ -16,8 +16,10 @@
       $moviesAmount = 5 * $page;
       $query = "SELECT * FROM movies TOP LIMIT $moviesAmount";
       $results = mysqli_query($db, $query);
-      if ($rows = mysqli_num_rows($results) > 0) {
-          for ($i = 0; $i < $rows; $i++) {
+      $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM movies"));
+      $total = $count[0];
+      if ($total > 0) {
+          for ($i = 0; $i < $total; $i++) {
               $row = $results->fetch_assoc();
               $title[$i] = $row['title'];
               $actors[$i] = $row['actors'];
@@ -36,7 +38,7 @@
 <body>
     <div class="container">
         <div class="main_in_iframe">
-        <?php for ($i = 0; $i < $rows; $i++) { ?>
+            <?php for ($i = 0; $i < $total; $i++) { ?>
             <div >
                 
                 <div class="onetitle">
