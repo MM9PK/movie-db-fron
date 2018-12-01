@@ -33,8 +33,8 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="main.php" target="iframe_a">Films</a></li>
 				<li><a href="series.php" target="iframe_a">Series</a></li>
-                <li><a href="#">TV Series</a></li>
-                <li><a href="#">Games</a></li>
+                <li><a href="tvseries.php" target="iframe_a">TV Series</a></li>
+                <li><a href="games.php" target="iframe_a">Games</a></li>
 				<li style="float:right">
 					<a href="index.php?logout='1'" style="background-color: red;">Log out</a>
 				</li>		

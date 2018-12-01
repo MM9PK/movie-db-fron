@@ -13,17 +13,17 @@
       $db = mysqli_connect('localhost', 'root', '', 'movie-db');
       mysqli_set_charset($db, 'utf8');
       $page = 1;
-      $seriesAmount = 5 * $page;
-      $query = "SELECT * FROM series TOP LIMIT $seriesAmount";
+      $gamesAmount = 5 * $page;
+      $query = "SELECT * FROM games TOP LIMIT $gamesAmount";
       $results = mysqli_query($db, $query);
       if ($rows = mysqli_num_rows($results) > 0) {
           for ($i = 0; $i < $rows; $i++) {
               $row = $results->fetch_assoc();
               $title[$i] = $row['title'];
-              $actors[$i] = $row['actors'];
+              $genre[$i] = $row['genre'];
               $releaseYear[$i] = $row['releaseYear'];
               $description[$i] = $row['description'];
-              $director[$i] = $row['director'];
+              $developer[$i] = $row['developer'];
               $img[$i] = $row['img'];
           }
       }
@@ -43,8 +43,8 @@
                     <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';?>
                     <div class="movieinfo">
                         <h1>Title: <?php echo  $title[$i];?></h1>   
-                        Director: <?php echo  $director[$i];?><br />
-                        Actors: <?php echo  $actors[$i];?><br />
+                        Developer: <?php echo  $developer[$i];?><br />
+                        Genre: <?php echo  $genre[$i];?><br />
                         Release Year: <?php echo  $releaseYear[$i];?><br />
                     </div>
                     

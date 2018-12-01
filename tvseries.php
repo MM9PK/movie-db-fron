@@ -14,7 +14,7 @@
       mysqli_set_charset($db, 'utf8');
       $page = 1;
       $seriesAmount = 5 * $page;
-      $query = "SELECT * FROM series TOP LIMIT $seriesAmount";
+      $query = "SELECT * FROM tvseries TOP LIMIT $seriesAmount";
       $results = mysqli_query($db, $query);
       if ($rows = mysqli_num_rows($results) > 0) {
           for ($i = 0; $i < $rows; $i++) {
@@ -23,7 +23,7 @@
               $actors[$i] = $row['actors'];
               $releaseYear[$i] = $row['releaseYear'];
               $description[$i] = $row['description'];
-              $director[$i] = $row['director'];
+              $studio[$i] = $row['studio'];
               $img[$i] = $row['img'];
           }
       }
@@ -43,7 +43,7 @@
                     <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';?>
                     <div class="movieinfo">
                         <h1>Title: <?php echo  $title[$i];?></h1>   
-                        Director: <?php echo  $director[$i];?><br />
+                        Studio: <?php echo  $studio[$i];?><br />
                         Actors: <?php echo  $actors[$i];?><br />
                         Release Year: <?php echo  $releaseYear[$i];?><br />
                     </div>
