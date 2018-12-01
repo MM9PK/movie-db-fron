@@ -14,7 +14,7 @@
       mysqli_set_charset($db, 'utf8');
       $page = 1;
       $gamesAmount = 5 * $page;
-      $query = "SELECT * FROM games TOP LIMIT $gamesAmount";
+      $query = "SELECT * FROM games";
       $results = mysqli_query($db, $query);
       $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM games"));
       $total = $count[0];

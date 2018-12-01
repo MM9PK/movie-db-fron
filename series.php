@@ -14,7 +14,7 @@
       mysqli_set_charset($db, 'utf8');
       $page = 1;
       $seriesAmount = 5 * $page;
-      $query = "SELECT * FROM series TOP LIMIT $seriesAmount";
+      $query = "SELECT * FROM series";
       $results = mysqli_query($db, $query);
       $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM series"));
       $total = $count[0];

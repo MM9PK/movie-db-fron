@@ -14,7 +14,7 @@
       mysqli_set_charset($db, 'utf8');
       $page = 1;
       $moviesAmount = 5 * $page;
-      $query = "SELECT * FROM movies TOP LIMIT $moviesAmount";
+      $query = "SELECT * FROM movies";
       $results = mysqli_query($db, $query);
       $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM movies"));
       $total = $count[0];
