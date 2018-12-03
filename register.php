@@ -61,7 +61,6 @@
 		<div class="footer">
             Powered By SEKCJA1
         </div>
->>>>>>> add_movie_panel
 	</div>
 
 </body>
