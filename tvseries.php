@@ -49,19 +49,17 @@
                         Actors: <?php echo  $actors[$i];?><br />
                         Release Year: <?php echo  $releaseYear[$i];?><br />
                     </div>
-                    
                     <button class="collapsible">Description</button>
                     <div class="description">
                         <br /><?php echo  $description[$i];?>
                     </div>
-                    
                 </div>
-
-                
             </div>
-            
         <?php } ?>
         </div> 
+        <div class="footer">
+				Powered By SEKCJA1
+		</div>
     </div>
 </body>
 
