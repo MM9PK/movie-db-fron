@@ -117,7 +117,7 @@ if (isset($_POST['add'])) {
         $nazwa_pliku = $_FILES['img']['name'];
         $tymczasowa_nazwa_pliku = $_FILES['img']['tmp_name'];
         $miejsce_docelowe = './obrazki/' . $nazwa_pliku;
-        if ($wielkosc_pliku <= $max) {
+        if ($wielkosc_pliku <= 0) {
             echo 'Serious?';
         }
         elseif ($wielkosc_pliku > $max) {
