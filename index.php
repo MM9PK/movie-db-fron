@@ -30,7 +30,6 @@
 		</div>
 		<div class="navigateBar">
 			<ul>
-				<li><a href="#">Home</a></li>
 				<li><a href="main.php" target="iframe_a">Films</a></li>
 				<li><a href="series.php" target="iframe_a">Series</a></li>
                 <li><a href="tvseries.php" target="iframe_a">TV Series</a></li>
@@ -40,7 +39,7 @@
 				</li>		
 				<li style="float:right">
 					<?php if ($_SESSION['email'] == "admin") :?>
-					<a href="index.php?add_movie" class="add-movie-button">Add New Shit</a>
+					<a href="index.php?add_movie" class="add-movie-button">Add New Movie</a>
 					<?php endif ?>
 				</li>
 				<li style="float:right">
@@ -50,9 +49,10 @@
 				</li>
 			</ul>
 		</div>
-        <iframe name="iframe_a" class=" main_iframe" src="main.php" width="100%" height="500px" scrolling="yes" frameborder="0"></iframe>
-		<div class="footer">
-				Powered By SEKCJA1
+		<div class="row">
+			<div class="col-sm-4 col-md-8">
+				<iframe name="iframe_a" class="main_iframe" src="main.php" width="100%" height="700em" scrolling="yes" frameborder="0"></iframe>
+			</div>
 		</div>
 </body>
 

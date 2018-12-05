@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿<?php include('server.php') ?>
-=======
 <?php include('server.php') ?>
->>>>>>> add_movie_panel
 <!DOCTYPE html>
 
 <head>

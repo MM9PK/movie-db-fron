@@ -40,7 +40,6 @@
         <div class="main_in_iframe">
             <?php for ($i = 0; $i < $total; $i++) { ?>
             <div >
-                
                 <div class="onetitle">
                     <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';?>
                     <div class="movieinfo">                      
@@ -49,19 +48,17 @@
                         Genre: <?php echo  $genre[$i];?><br />
                         Release Year: <?php echo  $releaseYear[$i];?><br />
                     </div>
-                    
                     <button class="collapsible">Description</button>
                     <div class="description">
                         <br /><?php echo  $description[$i];?>
                     </div>
-                    
                 </div>
-
-                
             </div>
-            
         <?php } ?>
         </div> 
+        <div class="footer">
+				Powered By SEKCJA1
+		</div>
     </div>
 </body>
 

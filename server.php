@@ -98,28 +98,16 @@ if (isset($_POST['add'])) {
     $actors = mysqli_real_escape_string($db, $_POST['actors']);
     $releaseYear = mysqli_real_escape_string($db, $_POST['releaseYear']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
-    $img = mysqli_real_escape_string($db, $_POST['img']);
+    $img = addslashes(file_get_contents($_FILES['img']['tmp_name']));
 
     // form validation: ensure that the form is correctly filled ...
     // by adding (array_push()) corresponding error unto $errors array
-    if (empty($title)) {
-        array_push($errors, "Title is required");
-    }
-    if (empty($director)) {
-        array_push($errors, "Director is required");
-    }
-    if (empty($actors)) {
-        array_push($errors, "Actor is required");
-    }
-    if ($releaseYear) {
-        array_push($errors, "Release Year is required");
-    }
-    if ($description) {
-        array_push($errors, "Description is required");
-    }
-    if ($img) {
-        array_push($errors, "File is required");
-    }
+    if (empty($title)) { array_push($errors, "Title is required"); }
+    if (empty($director)) { array_push($errors, "Director is required"); }
+    if (empty($actors)) { array_push($errors, "Actor is required"); }
+    if (empty($releaseYear)) { array_push($errors, "Release Year is required"); }
+    if (empty($description)) { array_push($errors, "Description is required"); }
+    if (empty($img)) { array_push($errors, "File is required"); }
 
 
     if (is_uploaded_file($_FILES['img']['tmp_name'])) {
@@ -129,8 +117,8 @@ if (isset($_POST['add'])) {
         $nazwa_pliku = $_FILES['img']['name'];
         $tymczasowa_nazwa_pliku = $_FILES['img']['tmp_name'];
         $miejsce_docelowe = './obrazki/' . $nazwa_pliku;
-        if ($wielkosc_pliku <= 0) {
-            echo 'File is too big.';
+        if ($wielkosc_pliku <= $max) {
+            echo 'Serious?';
         }
         elseif ($wielkosc_pliku > $max) {
             echo 'File is too big, max: ' . $max . '.';
@@ -145,7 +133,7 @@ if (isset($_POST['add'])) {
 
     if (count($errors) == 0) {
         $query = "INSERT INTO movies (title, director, actors, releaseYear, description, img) 
-  			  VALUES('$title', '$director', '$actors', '$releaseYear', '$descriptionusername', '$img')";
+  			  VALUES('$title', '$director', '$actors', '$releaseYear', '$description', '$img')";
         mysqli_query($db, $query);
         $_SESSION['success'] = "Add movie successfully";
         header('location: index.php');

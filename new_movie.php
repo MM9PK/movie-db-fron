@@ -48,7 +48,7 @@
 		</div>
 		<div class="main">
 			<div class="add-new-movie">
-				<form method="post" action="new_movie.php" class="logform">
+				<form method="post" action="new_movie.php" enctype="multipart/form-data" class="logform">
 					<?php include('errors.php'); ?>
 					<label>Title: </label>
 					<input type="text" name="title" value="title" onfocus="if(this.value=='title')this.value='';" onblur="if(this.value=='')this.value='title';"><br><br>
@@ -57,11 +57,11 @@
 					<label>Actors: </label>
 					<input type="text" name="actors" value="actors" onfocus="if(this.value=='actors')this.value='';" onblur="if(this.value=='')this.value='actors';"><br><br>
 					<label>Release Year: </label>
-					<input type="integer" name="releaseYear" value="releaseYear" onfocus="if(this.value=='releaseYear')this.value='';" onblur="if(this.value=='')this.value='releaseYear';"><br><br>
+					<input type="number" name="releaseYear" value="releaseYear" onfocus="if(this.value=='releaseYear')this.value='';" onblur="if(this.value=='')this.value='releaseYear';"><br><br>
 					<label>Description: </label>
-					<input type="text" name="description" value="description" onfocus="if(this.value=='password_2')this.value='';" onblur="if(this.value=='')this.value='password_2';"><br><br>
+					<input type="text" name="description" value="description" onfocus="if(this.value=='description')this.value='';" onblur="if(this.value=='')this.value='description';"><br><br>
 					<label>Image: </label>
-					<input type="file" name="img" value="img" accept="image/jpeg,image/gif"  onfocus="if(this.value=='password_2')this.value='';" onblur="if(this.value=='')this.value='password_2';"><br><br>
+					<input type="file" name="img" accept="image/jpeg,image/gif"><br><br>
 					<button type="submit" class="btn" name="add">Submit</button>
                 </form>
             </div>
@@ -71,4 +71,4 @@
         </div>
 	</div>
 </body>
-</html>
+</html>3
