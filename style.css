@@ -34,7 +34,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #888888;
+    background-color: #5F9EA0;
 	}
 
 .navigateBar li {
@@ -42,6 +42,13 @@ body {
 }
 
 .navigateBar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navigateBar p {
     display: block;
     color: white;
     text-align: center;
@@ -86,11 +93,6 @@ li a:hover {
    border-radius: 10px;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-}
-
-.main
-{
-    height: 750px;
 }
 
 .footer
