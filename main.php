@@ -19,7 +19,7 @@
 	} else {
 		$db = mysqli_connect('localhost', 'root', '', 'movie-db');
 		mysqli_set_charset($db, 'utf8');
-		$count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM movies"));
+		
 		$buffquery = mysqli_query($db, "SELECT * FROM movies");
 		$num_rows = mysqli_num_rows($buffquery);
 		
@@ -28,18 +28,13 @@
     {
 		$_SESSION['test'] += 1;
 		$counter = ((int)$_SESSION['test']);
-		echo $counter;
 	}
   
 	if(isset($_POST['hide']))
 	{
-		$_SESSION['test'] =1 ;
-		if($_SESSION['test'] < 1)
-		{
-		  $_SESSION['test'] = 1;
-	    }
+		$_SESSION['test'] = 1 ;
+		
 		$counter = ((int)$_SESSION['test']);
-		echo $counter;
 	}
 	
       $page = 0;
@@ -90,19 +85,14 @@
             </div>
         <?php } ?>
         </div> 
-        <div class="footer">
-            Powered By SEKCJA1
-        </div>
-                    </div>  
-                </div>  
-            </div>
-        <?php } ?>
-        </div> 
+        
 		<form method="post" action="">
 			<input type="submit" name="showMore" value="Wyświetl Więcej" />
 			<input type="submit" name="hide" value="Ukryj" />
 		</form>
-		
+		<div class="footer">
+            Powered By SEKCJA1
+        </div>
     </div>
 </body>
 
