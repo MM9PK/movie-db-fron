@@ -1,4 +1,7 @@
 <?php
+
+  $counter = 1; 
+   
   session_start();
 
   if (!isset($_SESSION['username'])) {
@@ -12,12 +15,41 @@
   } else {
       $db = mysqli_connect('localhost', 'root', '', 'movie-db');
       mysqli_set_charset($db, 'utf8');
-      $page = 1;
-      $gamesAmount = 5 * $page;
-      $query = "SELECT * FROM games";
+	  $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM games"));
+	  $buffquery = mysqli_query($db, "SELECT * FROM games");
+	  $num_rows = mysqli_num_rows($buffquery);
+	  
+	  if(isset($_POST['showMore']))
+    {
+		$_SESSION['test'] += 1;
+		$counter = ((int)$_SESSION['test']);
+		echo $counter;
+	}
+  
+	if(isset($_POST['hide']))
+	{
+		$_SESSION['test'] =1 ;
+		if($_SESSION['test'] < 1)
+		{
+		  $_SESSION['test'] = 1;
+	    }
+		$counter = ((int)$_SESSION['test']);
+		echo $counter;
+	}
+	
+      $page = 0;
+	  
+      $gamesAmount = 5 * $counter;
+	  if($gamesAmount > $num_rows) 
+	  {
+		  $gamesAmount = $num_rows;
+		  $counter -= 2;
+		 
+	  }
+	  
+      $query = "SELECT * FROM games LIMIT 0,".$gamesAmount;
       $results = mysqli_query($db, $query);
-      $count = mysqli_fetch_array(mysqli_query($db, "SELECT COUNT(*) FROM games"));
-      $total = $count[0];
+      $total = $gamesAmount;
       if ($total > 0) {
           for ($i = 0; $i < $total; $i++) {
               $row = $results->fetch_assoc();
@@ -59,6 +91,10 @@
         <div class="footer">
 				Powered By SEKCJA1
 		</div>
+		<form method="post" action="">
+			<input type="submit" name="showMore" value="Wyświetl Więcej" />
+			<input type="submit" name="hide" value="Ukryj" />
+		</form>
     </div>
 </body>
 

@@ -1,6 +1,8 @@
 <?php
   session_start();
 
+  $counter = 1;
+  
   if (!isset($_SESSION['username'])) {
       $_SESSION['msg'] = "You must log in first";
       header('location: login.php');
