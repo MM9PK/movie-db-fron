@@ -14,78 +14,79 @@
       header("location: login.php");
   } else {
       $db = mysqli_connect('localhost', 'root', '', 'movie-db');
-      mysqli_set_charset($db, 'utf8');
-	  $buffquery = mysqli_query($db, "SELECT * FROM games");
-	  $num_rows = mysqli_num_rows($buffquery);
-	  
-	  if(isset($_POST['showMore']))
-    {
-		$_SESSION['test'] += 1;
-		$counter = ((int)$_SESSION['test']);
-	}
-  
-	if(isset($_POST['hide']))
-	{
-		$_SESSION['test'] = 1 ;
-		$counter = ((int)$_SESSION['test']);
-	}
-	
-      $page = 0;
-	  
-      $gamesAmount = 5 * $counter;
-	  if($gamesAmount > $num_rows) 
-	  {
-		  $gamesAmount = $num_rows;
-		 
-	  }
-	  
-      $query = "SELECT * FROM games LIMIT 0,".$gamesAmount;
-      $results = mysqli_query($db, $query);
-      $total = $gamesAmount;
-      if ($total > 0) {
-          for ($i = 0; $i < $total; $i++) {
-              $row = $results->fetch_assoc();
-              $title[$i] = $row['title'];
-              $genre[$i] = $row['genre'];
-              $releaseYear[$i] = $row['releaseYear'];
-              $description[$i] = $row['description'];
-              $developer[$i] = $row['developer'];
-              $img[$i] = $row['img'];
-          }
-      }
+      mysqli_set_charset($db, 'utf8');	  
+      
+      $recordperpage = 3;
+      if(isset($_GET['page']) & !empty($_GET['page']))
+        {
+            $currentpage = $_GET['page'];
+        }
+        else
+        {
+            $currentpage = 1;
+        }
+        $recordSkip = ($currentpage * $recordperpage) - $recordperpage;
+        $query1 = "SELECT * FROM games";
+        $totalpageCounted = mysqli_query($db, $query1);
+        $totalresult = mysqli_num_rows($totalpageCounted);
+
+        $lastpage = ceil($totalresult/$recordperpage);
+        $recordSkippage = 1; 
+        $nextpage = $currentpage + 1;
+        $previouspage = $currentpage - 1;
+        //It will select only required pages from database
+        $query2 = "SELECT * FROM games LIMIT $recordSkip, $recordperpage";
+        $results = mysqli_query($db, $query2);
+      
   }
 ?>
 
 <head>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
 </head>
 <body>
     <div class="container">
         <div class="main_in_iframe">
-            <?php for ($i = 0; $i < $total; $i++) { ?>
+            <?php while($row = mysqli_fetch_assoc($results)) { ?>
             <div >
                 <div class="onetitle">
-                    <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($img[$i]).'" width="150" height="150"/>';?>
+                    <?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($row['img']).'" width="150" height="150"/>';?>
                     <div class="movieinfo">                      
-                        <h1>Title: <?php echo  $title[$i];?></h1>   
-                        Developer: <?php echo  $developer[$i];?><br />
-                        Genre: <?php echo  $genre[$i];?><br />
-                        Release Year: <?php echo  $releaseYear[$i];?><br />
+                        <h1>Title: <?php echo  $row['title'];?></h1>   
+                        Developer: <?php echo  $row['developer'];?><br />
+                        Genre: <?php echo  $row['genre'];?><br />
+                        Release Year: <?php echo  $row['releaseYear'];?><br />
                     </div>
                     <button class="collapsible">Description</button>
                     <div class="description">
-                        <br /><?php echo  $description[$i];?>
+                        <br /><?php echo  $row['description'];?>
                     </div>
                 </div>
             </div>
         <?php } ?>
         </div> 
-        
-		<form method="post" action="">
-			<input type="submit" name="showMore" value="Wyświetl Więcej" />
-			<input type="submit" name="hide" value="Ukryj" />
-		</form>
-
+        <ul class="pagination">
+   <?php if($currentpage != $recordSkippage){ ?>     <li class="page-item">
+      <a class="page-link" href="?page=<?php echo $recordSkippage ?>" tabindex="-1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">First</span>
+      </a>
+    </li>
+    <?php } ?>
+    <?php if($currentpage >= 2){ ?>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $previouspage ?>"><?php echo $previouspage ?></a></li>
+    <?php } ?>
+    <li class="page-item active"><a class="page-link" href="?page=<?php echo $currentpage ?>"><?php echo $currentpage ?></a></li>
+    <?php if($currentpage != $lastpage){ ?>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $nextpage ?>"><?php echo $nextpage ?></a></li>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $lastpage ?>" aria-label="Next"> 
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Last</span>
+      </a>
+     </li>
+     <?php } ?>
+    </ul>
         <div class="footer">
 				Powered By SEKCJA1
 		</div>
