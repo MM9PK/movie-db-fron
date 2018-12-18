@@ -91,7 +91,7 @@ if (isset($_POST['login_user'])) {
 }
 
 //ADD NEW MOVIE
-if (isset($_POST['add'])) {
+if (isset($_POST['add_movie'])) {
     // receive all input values from the form
     $title = mysqli_real_escape_string($db, $_POST['title']);
     $director = mysqli_real_escape_string($db, $_POST['director']);
@@ -135,7 +135,157 @@ if (isset($_POST['add'])) {
         $query = "INSERT INTO movies (title, director, actors, releaseYear, description, img) 
   			  VALUES('$title', '$director', '$actors', '$releaseYear', '$description', '$img')";
         mysqli_query($db, $query);
-        $_SESSION['success'] = "Add movie successfully";
+        $_SESSION['success'] = "Add movie Successfully";
+        header('location: index.php');
+    }
+}
+
+//ADD NEW SERIES
+if (isset($_POST['add_series'])) {
+    // receive all input values from the form
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $director = mysqli_real_escape_string($db, $_POST['director']);
+    $actors = mysqli_real_escape_string($db, $_POST['actors']);
+    $releaseYear = mysqli_real_escape_string($db, $_POST['releaseYear']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $img = addslashes(file_get_contents($_FILES['img']['tmp_name']));
+
+    // form validation: ensure that the form is correctly filled ...
+    // by adding (array_push()) corresponding error unto $errors array
+    if (empty($title)) { array_push($errors, "Title is required"); }
+    if (empty($director)) { array_push($errors, "Director is required"); }
+    if (empty($actors)) { array_push($errors, "Actor is required"); }
+    if (empty($releaseYear)) { array_push($errors, "Release Year is required"); }
+    if (empty($description)) { array_push($errors, "Description is required"); }
+    if (empty($img)) { array_push($errors, "File is required"); }
+
+
+    if (is_uploaded_file($_FILES['img']['tmp_name'])) {
+        $max = 1024 * 2; // 2MB
+        $wielkosc_pliku = $_FILES['img']['size'];
+        $typ_pliku = $_FILES['img']['type'];
+        $nazwa_pliku = $_FILES['img']['name'];
+        $tymczasowa_nazwa_pliku = $_FILES['img']['tmp_name'];
+        $miejsce_docelowe = './obrazki/' . $nazwa_pliku;
+        if ($wielkosc_pliku <= 0) {
+            echo 'Serious?';
+        }
+        elseif ($wielkosc_pliku > $max) {
+            echo 'File is too big, max: ' . $max . '.';
+        }
+        else {
+            if (!@move_uploaded_file($tymczasowa_nazwa_pliku, $miejsce_docelowe))
+                echo 'Localization do not exist';
+            else
+                echo 'Uploaded file successfully.';
+        }
+    }
+
+    if (count($errors) == 0) {
+        $query = "INSERT INTO series (title, director, actors, releaseYear, description, img) 
+  			  VALUES('$title', '$director', '$actors', '$releaseYear', '$description', '$img')";
+        mysqli_query($db, $query);
+        $_SESSION['success'] = "Add series Successfully";
+        header('location: index.php');
+    }
+}
+
+//ADD NEW TV SERIES
+if (isset($_POST['add_tv_series'])) {
+    // receive all input values from the form
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $studio = mysqli_real_escape_string($db, $_POST['studio']);
+    $actors = mysqli_real_escape_string($db, $_POST['actors']);
+    $releaseYear = mysqli_real_escape_string($db, $_POST['releaseYear']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $img = addslashes(file_get_contents($_FILES['img']['tmp_name']));
+
+    // form validation: ensure that the form is correctly filled ...
+    // by adding (array_push()) corresponding error unto $errors array
+    if (empty($title)) { array_push($errors, "Title is required"); }
+    if (empty($studio)) { array_push($errors, "Studio is required"); }
+    if (empty($actors)) { array_push($errors, "Actor is required"); }
+    if (empty($releaseYear)) { array_push($errors, "Release Year is required"); }
+    if (empty($description)) { array_push($errors, "Description is required"); }
+    if (empty($img)) { array_push($errors, "File is required"); }
+
+
+    if (is_uploaded_file($_FILES['img']['tmp_name'])) {
+        $max = 1024 * 2; // 2MB
+        $wielkosc_pliku = $_FILES['img']['size'];
+        $typ_pliku = $_FILES['img']['type'];
+        $nazwa_pliku = $_FILES['img']['name'];
+        $tymczasowa_nazwa_pliku = $_FILES['img']['tmp_name'];
+        $miejsce_docelowe = './obrazki/' . $nazwa_pliku;
+        if ($wielkosc_pliku <= 0) {
+            echo 'Serious?';
+        }
+        elseif ($wielkosc_pliku > $max) {
+            echo 'File is too big, max: ' . $max . '.';
+        }
+        else {
+            if (!@move_uploaded_file($tymczasowa_nazwa_pliku, $miejsce_docelowe))
+                echo 'Localization do not exist';
+            else
+                echo 'Uploaded file successfully.';
+        }
+    }
+
+    if (count($errors) == 0) {
+        $query = "INSERT INTO tvseries (title, studio, actors, releaseYear, description, img) 
+  			  VALUES('$title', '$studio', '$actors', '$releaseYear', '$description', '$img')";
+        mysqli_query($db, $query);
+        $_SESSION['success'] = "Add TV Series Successfully";
+        header('location: index.php');
+    }
+}
+
+//ADD NEW GAME
+if (isset($_POST['add_game'])) {
+    // receive all input values from the form
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $developer = mysqli_real_escape_string($db, $_POST['developer']);
+    $genre = mysqli_real_escape_string($db, $_POST['genre']);
+    $releaseYear = mysqli_real_escape_string($db, $_POST['releaseYear']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $img = addslashes(file_get_contents($_FILES['img']['tmp_name']));
+
+    // form validation: ensure that the form is correctly filled ...
+    // by adding (array_push()) corresponding error unto $errors array
+    if (empty($title)) { array_push($errors, "Title is required"); }
+    if (empty($developer)) { array_push($errors, "Developer is required"); }
+    if (empty($genre)) { array_push($errors, "Genre is required"); }
+    if (empty($releaseYear)) { array_push($errors, "Release Year is required"); }
+    if (empty($description)) { array_push($errors, "Description is required"); }
+    if (empty($img)) { array_push($errors, "File is required"); }
+
+
+    if (is_uploaded_file($_FILES['img']['tmp_name'])) {
+        $max = 1024 * 2; // 2MB
+        $wielkosc_pliku = $_FILES['img']['size'];
+        $typ_pliku = $_FILES['img']['type'];
+        $nazwa_pliku = $_FILES['img']['name'];
+        $tymczasowa_nazwa_pliku = $_FILES['img']['tmp_name'];
+        $miejsce_docelowe = './obrazki/' . $nazwa_pliku;
+        if ($wielkosc_pliku <= 0) {
+            echo 'Serious?';
+        }
+        elseif ($wielkosc_pliku > $max) {
+            echo 'File is too big, max: ' . $max . '.';
+        }
+        else {
+            if (!@move_uploaded_file($tymczasowa_nazwa_pliku, $miejsce_docelowe))
+                echo 'Localization do not exist';
+            else
+                echo 'Uploaded file successfully.';
+        }
+    }
+
+    if (count($errors) == 0) {
+        $query = "INSERT INTO games (title, developer, genre, releaseYear, description, img) 
+  			  VALUES('$title', '$developer', '$genre', '$releaseYear', '$description', '$img')";
+        mysqli_query($db, $query);
+        $_SESSION['success'] = "Add Game Successfully";
         header('location: index.php');
     }
 }

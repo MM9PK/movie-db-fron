@@ -19,12 +19,10 @@
             <div class="login">
                 <form method="post" action="login.php" class="logform">
                     <?php include('errors.php'); ?>
-                    <label>E-mail:</label>
-                    <input type="text" name="email" value="email" onfocus="if(this.value=='email')this.value='';"
-                        onblur="if(this.value=='')this.value='email';"><br><br>
-                    <label>Password:</label>
-                    <input type="password" name="password" value="pass" onfocus="if(this.value=='pass')this.value='';"
-                        onblur="if(this.value=='')this.value='pass';"><br><br>
+                    <label>E-mail:</label><br>
+                    <input id="input" type="text" name="email" placeholder="email"><br><br>
+                    <label>Password:</label><br>
+                    <input id="input" type="password" name="password" placeholder="Password"><br><br>
                     <button type="submit" class="btn" name="login_user">Login</button>
                     <p>
                         Not yet a member? <a href="register.php">Sign up</a>

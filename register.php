@@ -20,14 +20,14 @@
 			<div class="login">
 				<form method="post" action="register.php" class="logform">
 					<?php include('errors.php'); ?>
-					<label>Username</label>
-					<input type="text" name="username" value="username" onfocus="if(this.value=='username')this.value='';" onblur="if(this.value=='')this.value='username';"><br><br>
-					<label>Email</label>
-					<input type="email" name="email" value="email" onfocus="if(this.value=='email')this.value='';" onblur="if(this.value=='')this.value='email';"><br><br>
-					<label>Password</label>
-					<input type="password" name="password_1" value="password_1" onfocus="if(this.value=='password_1')this.value='';" onblur="if(this.value=='')this.value='password_1';"><br><br>
-					<label>Confirm password</label>
-					<input type="password" name="password_2" value="password_2" onfocus="if(this.value=='password_2')this.value='';" onblur="if(this.value=='')this.value='password_2';"><br><br>
+					<label>Username:</label><br>
+					<input id="input" type="text" name="username" placeholder="username"><br><br>
+					<label>Email:</label><br>
+					<input id="input" type="email" name="email" placeholder="email"><br><br>
+					<label>Password:</label><br>
+					<input id="input" type="password" name="password_1" placeholder="Password"><br><br>
+					<label>Confirm password:</label><br>
+					<input id="input" type="password" name="password_2" placeholder="Confirm Password"><br><br>
 					<button type="submit" class="btn" name="reg_user">Register</button>
 					<p> Already a member? <a href="login.php">Sign in</a></p>
 				</form>

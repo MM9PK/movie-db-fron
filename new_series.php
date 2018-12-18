@@ -6,9 +6,9 @@
       header('location: login.php');
   }
   if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: login.php");
+	session_destroy();
+	unset($_SESSION['username']);
+	header("location: login.php");
 }
 ?>
 <?php if ($_SESSION['email'] != "admin") : header('location: index.php');?><?php endif ?>
@@ -19,18 +19,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Add</title>
+	<title>Add Series</title>
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 	<div class="container">
 		<div class="baner">
-			<h2>"Serwis Filmowy" - Add New Movie</h1>
+			<h2>"Serwis Filmowy" - Add New Series</h1>
         </div>
     
 		<div class="main" style="padding-bottom: 30px;">
 			<div class="login">
-				<form method="post" action="new_movie.php" enctype="multipart/form-data" class="logform">
+				<form method="post" action="new_series.php" enctype="multipart/form-data" class="logform">
 					<?php include('errors.php'); ?>
 					<label>Title:</label><br>
 					<input id="input" type="text" name="title" placeholder="title"><br><br>
@@ -44,7 +44,7 @@
 					<input id="input" type="text" name="description" placeholder="description"><br><br>
 					<label>Image:</label><br>
 					<input type="file" name="img" accept="image/jpeg,image/gif"><br><br>
-					<button type="submit" class="btn" name="add_movie">Submit</button>
+					<button type="submit" class="btn" name="add_series">Submit</button>
                 </form>
             </div>
         </div>

@@ -41,7 +41,7 @@ body {
     float: left;
 }
 
-.navigateBar li a {
+.navigateBar li a, .add{
     display: block;
     color: white;
     text-align: center;
@@ -56,8 +56,13 @@ body {
     text-decoration: none;
 }
 
-li a:hover {
+li a:hover, .add{
     background-image: linear-gradient(to bottom , #000000, #333);
+}
+
+#input {
+    border: solid 1px #ccc;
+    border-radius: 6px; 
 }
 
 .navigateBar input[type=text], .main input {
@@ -186,7 +191,7 @@ img
   form, .content {
     width: 70%;
     margin: 0px auto;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #B0C4DE;
     background: white;
     border-radius: 0px 0px 10px 10px;
@@ -208,12 +213,13 @@ img
     border: 1px solid gray;
   }
   .btn {
-    padding: 10px;
-    font-size: 15px;
-    color: white;
-    background: #5F9EA0;
-    border: none;
-    border-radius: 5px;
+    padding: 10px!important;
+    font-size: 15px!important;
+    color: white!important;
+    background: #5F9EA0!important;
+    border: none!important;
+    border-radius: 5px!important;
+    margin-top:0!important;
   }
   .error {
     width: 92%; 
@@ -230,4 +236,35 @@ img
     background: #dff0d8; 
     border: 1px solid #3c763d;
     margin-bottom: 20px;
+  }
+  
+  .dropdown {
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    height:50px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    margin: 0;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top:50px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    display: block;
+    width: 113px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
   }

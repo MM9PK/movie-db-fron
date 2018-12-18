@@ -12,9 +12,11 @@
       unset($_SESSION['username']);
       header("location: login.php");
   }
-  if (isset($_GET['add_movie'])) {
-	header("location: new_movie.php");
-}
+  if (isset($_GET['add_movie'])) header("location: new_movie.php");
+  if (isset($_GET['add_series'])) header("location: new_series.php");
+  if (isset($_GET['add_tv_series'])) header("location: new_tv_series.php");
+  if (isset($_GET['add_game'])) header("location: new_game.php");
+
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +43,15 @@
 				</li>		
 				<li style="float:right">
 					<?php if ($_SESSION['email'] == "admin") :?>
-					<a href="index.php?add_movie" class="add-movie-button">Add New Movie</a>
+					<div class="dropdown">
+                        <button class="dropbtn">Choose Category</button>
+                        <div class="dropdown-content">
+                            <a href="index.php?add_movie" class="add">Add Movie</a>
+							<a href="index.php?add_game" class="add">Add Game</a>
+                            <a href="index.php?add_series" class="add">Add Series</a>
+							<a href="index.php?add_tv_series" class="add">Add TV Series</a>
+                        </div>
+                    </div>
 					<?php endif ?>
 				</li>
 				<li style="float:right">
