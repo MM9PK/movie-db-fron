@@ -11,18 +11,9 @@ body {
 	min-height: 100%;
 }
 
-.container
-{
-    width: 80%;
-    margin: 0 auto;
-    height: 100%;
-}
-
-
 .baner
 {
     background-color: #333;
-    height: 10%;
     color: white;
     text-align: center;
     padding-top: 50px;
@@ -268,3 +259,4 @@ img
   .dropdown:hover .dropdown-content {
     display: block;
   }
+  
